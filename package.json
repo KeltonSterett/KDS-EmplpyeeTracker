@@ -1,0 +1,24 @@
+{
+  "name": "kds-emplpyeetracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeltonSterett/KDS-EmplpyeeTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KeltonSterett/KDS-EmplpyeeTracker/issues"
+  },
+  "homepage": "https://github.com/KeltonSterett/KDS-EmplpyeeTracker#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "mysql2": "^3.3.0"
+  }
+}
