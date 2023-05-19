@@ -1,4 +1,4 @@
-const connection = require('./connection');
+const connection = require('connection');
 const { prompt } = require('inquirer');
 const db = require('./db/index.js');
 
@@ -76,4 +76,14 @@ function questions() {
             }
         })
 }
-        // write a functions that take user input and (create, update, delete) and calls the appropriate method
+        // write functions that take user input and (create, update, delete) and calls the appropriate method
+        function viewAllDepartments() {
+            db.viewAllDepartments()
+                .then(([rows]) => {
+                    let departments = rows;
+                    console.log('\n');
+                    console.table(departments);
+                })
+                .then(() => questions());
+        }
+        
