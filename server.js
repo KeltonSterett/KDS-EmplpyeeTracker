@@ -53,6 +53,26 @@ function questions() {
                 case 'viewAllRoles':
                     viewAllRoles();
                     break;
+            // if the choice is view all employees, call the view all employees method
+                case 'viewAllEmployees':
+                    viewAllEmployees();
+                    break;
+            // if the choice is add department, call the add department method
+                case 'addDepartment':
+                    addDepartment();
+                    break;
+            // if the choice is add role, call the add role method
+                case 'addRole':
+                    addRole();
+                    break;
+            // if the choice is add employee, call the add employee method
+                case 'addEmployee':
+                    addEmployee();
+                    break;
+            // if the choice is update employee role, call the update employee role method
+                case 'updateEmployeeRole':
+                    updateEmployeeRole();
+                    break;
             }
         })
 }
