@@ -1,14 +1,14 @@
 const inquirer = require('inquirer');
 const mysql2 = require('mysql2');
 
-const db = mysql2.createConnection(
+const connection = mysql2.createConnection(
     {
         host: 'localhost',
         user: 'root',
-        password: '',
-        database: 'employee_db'
+        password: 'Hattie732$',
+        database: 'employee_tracker_db'
     },
 );
 
-module.exports = db;
+module.exports = connection;
 

@@ -13,8 +13,7 @@ INSERT INTO role (title, salary, department_id) VALUES
 ('Software Engineer', 120000.00, 2),
 ('Accountant', 125000.00, 3),
 ('Legal Team Lead', 250000.00, 4),
-('Lawyer', 190000.00, 4),
-('Queen', 90000000000.00, 1);
+('Lawyer', 190000.00, 4);
 -- insterts data for required fields into employee table
 INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES
 ('John', 'Doe', 1, NULL),
@@ -23,5 +22,4 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES
 ('Kevin', 'Tupik', 4, 3),
 ('Malia', 'Brown', 5, NULL),
 ('Sarah', 'Lourd', 6, 5),
-('Tom', 'Allen', 7, NULL),
-('Harriett', 'Steed', 8, NULL);
+('Tom', 'Allen', 7, NULL);
