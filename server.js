@@ -79,7 +79,7 @@ function questions() {
                     break;
                 // if the choice is add role, call the add role method
                 case 'addRole':
-                    db.addRole()
+                    addRole()
                     // questions();
                     break;
                 // if the choice is add employee, call the add employee method
@@ -124,17 +124,17 @@ function addDepartment() {
 function addRole() {
     prompt([
         {
-            name: 'name',
+            name: 'title',
             type: 'input',
             message: 'What is the title of the role you would like to add?'
         },
         {
-            name: 'name',
+            name: 'salary',
             type: 'input',
             message: 'What is the salary for this role?'
         },
         {
-            name: 'name',
+            name: 'department_id',
             type: 'input',
             message: 'What is the department id for this role?'
         }
@@ -151,29 +151,51 @@ function addRole() {
 function addEmployee() {
     prompt([
         {
-            name: 'name',
+            name: 'first_name',
             type: 'input',
             message: 'What is the first name of the employee you would like to add?'
         },
         {
-            name: 'name',
+            name: 'last_name',
             type: 'input',
             message: 'What is the last name of the employee you would like to add?'
         },
         {
-            name: 'name',
+            name: 'role_id',
             type: 'input',
-            message: 'What is the role for this employee?'
+            message: 'What is the role id for this employee?'
         },
         {
-            name: 'name',
+            name: 'manager_id',
             type: 'input',
-            message: 'Who is the manager for this employee?'
+            message: 'What is the manager id for this employee?'
         }
     ])
         .then((res) => {
             let employee = res;
             db.addEmployee(employee).then(() => {
+                console.table(employee);
+            });
+        })
+}
+
+// function to update an employee role
+function updateEmployeeRole() {
+    prompt([
+        {
+            name: 'id',
+            type: 'input',
+            message: 'What is the id of the employee you would like to update?'
+        },
+        {
+            name: 'role_id',
+            type: 'input',
+            message: 'What is the new role id for this employee?'
+        }
+    ])
+        .then((res) => {
+            let employee = res;
+            db.updateEmployeeRole(employee).then(() => {
                 console.table(employee);
             });
         })
