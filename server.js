@@ -1,6 +1,7 @@
 const connection = require('./connection.js');
 const { prompt } = require('inquirer');
 const db = require('./db/index.js');
+const cTable = require('console.table');
 
 questions()
 function questions() {
@@ -53,37 +54,43 @@ function questions() {
             switch (choices) {
                 case 'viewAllDepartments':
                     db.viewAllDepartments().then((res) => {
-                        console.log(res[0]);
+                        console.table(res[0]);
                     });
+                    questions();
                     break;
                 // if the choice is view all roles, call the view all roles method
                 case 'viewAllRoles':
                     db.viewAllRoles().then((res) => {
-                        console.log(res[0]);
+                        console.table(res[0]);
                     });
+                    // questions();
                     break;
                 // if the choice is view all employees, call the view all employees method
                 case 'viewAllEmployees':
                     db.viewAllEmployees().then((res) => {
-                        console.log(res[0]);
+                        console.table(res[0]);
                     });
+                    // questions();
                     break;
                 // if the choice is add department, call the add department method and prompt the user for the department name
                 case 'addDepartment':
                     addDepartment()
-
+                    questions()
                     break;
                 // if the choice is add role, call the add role method
                 case 'addRole':
-                    db.addRole();
+                    db.addRole()
+                    // questions();
                     break;
                 // if the choice is add employee, call the add employee method
                 case 'addEmployee':
-                    addEmployee();
+                    addEmployee()
+                    // questions();
                     break;
                 // if the choice is update employee role, call the update employee role method
                 case 'updateEmployeeRole':
                     updateEmployeeRole();
+                    // questions();
                     break;
                 // if the choice is exit, exit the application
                 case 'exit':
@@ -94,20 +101,47 @@ function questions() {
         })
 };
 
+// Functions for adding an employee, role, and department
 // function to add a department
 function addDepartment() {
     prompt([
         {
-            name: 'department',
+            name: 'name',
             type: 'input',
             message: 'What is the name of the department you would like to add?'
         }
     ])
         .then((res) => {
             let department = res;
-            console.log(department);
-            db.addDepartment(department.department).then(() => {
-                console.log(department);
+            db.addDepartment(department).then(() => {
+                console.table(department);
+            });
+        })
+};
+
+// function to add a role
+function addRole() {
+    prompt([
+        {
+            name: 'name',
+            type: 'input',
+            message: 'What is the title of the role you would like to add?'
+        },
+        {
+            name: 'name',
+            type: 'input',
+            message: 'What is the salary for this role?'
+        },
+        {
+            name: 'name',
+            type: 'input',
+            message: 'What is the department id for this role?'
+        }
+    ])
+        .then((res) => {
+            let role = res;
+            db.addRole(role).then(() => {
+                console.table(role);
             });
         })
 }
