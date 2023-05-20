@@ -1,6 +1,6 @@
 const connection = require('./connection.js');
 const { prompt } = require('inquirer');
-const DB = require('./db/index.js');
+const db = require('./db/index.js');
 
 questions()
 function questions() {
@@ -52,31 +52,30 @@ function questions() {
             // if the choice is view all departments, call the view all departments method
             switch (choices) {
                 case 'viewAllDepartments':
-                    DB.viewAllDepartments().then((res) => {
+                    db.viewAllDepartments().then((res) => {
                         console.log(res[0]);
                     });
                     break;
                 // if the choice is view all roles, call the view all roles method
                 case 'viewAllRoles':
-                    DB.viewAllRoles().then((res) => {
+                    db.viewAllRoles().then((res) => {
                         console.log(res[0]);
                     });
                     break;
                 // if the choice is view all employees, call the view all employees method
                 case 'viewAllEmployees':
-                    DB.viewAllEmployees().then((res) => {
+                    db.viewAllEmployees().then((res) => {
                         console.log(res[0]);
                     });
                     break;
-                // if the choice is add department, call the add department method
+                // if the choice is add department, call the add department method and prompt the user for the department name
                 case 'addDepartment':
-                    DB.addDepartment().then((res) => {
-                        console.log(res[0]);
-                    });
+                    addDepartment()
+                    
                     break;
                 // if the choice is add role, call the add role method
                 case 'addRole':
-                    addRole();
+                    db.addRole();
                     break;
                 // if the choice is add employee, call the add employee method
                 case 'addEmployee':
@@ -95,3 +94,19 @@ function questions() {
         })
 };
 
+    // function to add a department
+    function addDepartment() {
+        prompt([
+            {
+                name: 'department',
+                type: 'input',
+                message: 'What is the name of the department you would like to add?'
+            }
+        ])
+            .then((res) => {
+                let department = res;
+                db.addDepartment(department).then(() => {
+                    console.log(department);
+                });
+            })
+    }
