@@ -38,28 +38,41 @@ function questions() {
                 {
                     name: 'Update Employee Role',
                     value: 'updateEmployeeRole'
+                },
+                {
+                    name: 'Exit',
+                    value: 'exit'
                 }
             ]
         }
     ])
         .then((answers) => {
-            let choice = answers.choice;
+            console.log(answers);
+            let choices = answers.choices;
             // if the choice is view all departments, call the view all departments method
-            switch (choice) {
+            switch (choices) {
                 case 'viewAllDepartments':
-                    viewAllDepartments();
+                    DB.viewAllDepartments().then((res) => {
+                        console.log(res[0]);
+                    });
                     break;
                 // if the choice is view all roles, call the view all roles method
                 case 'viewAllRoles':
-                    viewAllRoles();
+                    DB.viewAllRoles().then((res) => {
+                        console.log(res[0]);
+                    });
                     break;
                 // if the choice is view all employees, call the view all employees method
                 case 'viewAllEmployees':
-                    viewAllEmployees();
+                    DB.viewAllEmployees().then((res) => {
+                        console.log(res[0]);
+                    });
                     break;
                 // if the choice is add department, call the add department method
                 case 'addDepartment':
-                    addDepartment();
+                    DB.addDepartment().then((res) => {
+                        console.log(res[0]);
+                    });
                     break;
                 // if the choice is add role, call the add role method
                 case 'addRole':
@@ -73,20 +86,12 @@ function questions() {
                 case 'updateEmployeeRole':
                     updateEmployeeRole();
                     break;
+                // if the choice is exit, exit the application
+                case 'exit':
+                    console.log('Goodbye!');
+                    connection.end();
+                    break;
             }
         })
 };
-
-// write functions that take user input and (create, update, delete) and calls the appropriate method
-
-// creating view all department function query the database and return the results
-// connection.query('SELECT * FROM department', function (err, results) {
-//     if (err) throw err;
-//     console.log(results);
-// });
-// // creating view all roles function query the database and return the results
-// connection.query('SELECT * FROM role', function (err, results) {
-//     if (err) throw err;
-//     console.log(results);
-// });
 

@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const mysql2 = require('mysql2');
 
-const connection = mysql2.createConnection(
+const MySqlconnection = mysql2.createConnection(
     {
         host: 'localhost',
         user: 'root',
@@ -10,5 +10,5 @@ const connection = mysql2.createConnection(
     },
 );
 
-module.exports = connection;
+module.exports = MySqlconnection;
 

@@ -1,8 +1,8 @@
-const connection = require('../connection');
+const MySqlconnection = require('../connection');
 
 class DB {
-    constructor(connection) {
-        this.connection = connection;
+    constructor() {
+        this.connection = MySqlconnection;
     }
 // create a method that returns all departments
     viewAllDepartments() {
@@ -46,6 +46,10 @@ class DB {
             'UPDATE employee SET role_id = ? WHERE id = ?', [roleId, employeeId]
         );
     }
+// create a method that ends the connection
+    endConnection() {
+        this.connection.end();
+    }
 }
 
-module.exports = DB;
+module.exports = new DB();
