@@ -74,8 +74,8 @@ function questions() {
                     break;
                 // if the choice is add department, call the add department method and prompt the user for the department name
                 case 'addDepartment':
-                    addDepartment()
-                    questions()
+                    addDepartment();
+                    // questions()
                     break;
                 // if the choice is add role, call the add role method
                 case 'addRole':
@@ -114,10 +114,11 @@ function addDepartment() {
         .then((res) => {
             let department = res;
             db.addDepartment(department).then(() => {
+                console.log('Department added to database!');
                 console.table(department);
             });
         })
-};
+}
 
 // function to add a role
 function addRole() {
@@ -142,6 +143,38 @@ function addRole() {
             let role = res;
             db.addRole(role).then(() => {
                 console.table(role);
+            });
+        })
+}
+
+// function to add an employee
+function addEmployee() {
+    prompt([
+        {
+            name: 'name',
+            type: 'input',
+            message: 'What is the first name of the employee you would like to add?'
+        },
+        {
+            name: 'name',
+            type: 'input',
+            message: 'What is the last name of the employee you would like to add?'
+        },
+        {
+            name: 'name',
+            type: 'input',
+            message: 'What is the role for this employee?'
+        },
+        {
+            name: 'name',
+            type: 'input',
+            message: 'Who is the manager for this employee?'
+        }
+    ])
+        .then((res) => {
+            let employee = res;
+            db.addEmployee(employee).then(() => {
+                console.table(employee);
             });
         })
 }

@@ -5,7 +5,7 @@ const MySqlconnection = mysql2.createConnection(
     {
         host: 'localhost',
         user: 'root',
-        password: 'Hattie732$',
+        password: '',
         database: 'employee_tracker_db'
     },
 );
