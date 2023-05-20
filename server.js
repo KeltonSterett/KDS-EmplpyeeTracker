@@ -71,7 +71,7 @@ function questions() {
                 // if the choice is add department, call the add department method and prompt the user for the department name
                 case 'addDepartment':
                     addDepartment()
-                    
+
                     break;
                 // if the choice is add role, call the add role method
                 case 'addRole':
@@ -94,19 +94,20 @@ function questions() {
         })
 };
 
-    // function to add a department
-    function addDepartment() {
-        prompt([
-            {
-                name: 'department',
-                type: 'input',
-                message: 'What is the name of the department you would like to add?'
-            }
-        ])
-            .then((res) => {
-                let department = res;
-                db.addDepartment(department).then(() => {
-                    console.log(department);
-                });
-            })
-    }
+// function to add a department
+function addDepartment() {
+    prompt([
+        {
+            name: 'department',
+            type: 'input',
+            message: 'What is the name of the department you would like to add?'
+        }
+    ])
+        .then((res) => {
+            let department = res;
+            console.log(department);
+            db.addDepartment(department.department).then(() => {
+                console.log(department);
+            });
+        })
+}

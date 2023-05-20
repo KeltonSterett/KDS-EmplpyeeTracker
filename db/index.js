@@ -24,8 +24,9 @@ class DB {
     }
 // create a method that adds a department
     addDepartment(department) {
+        console.log(department);
         return this.connection.promise().query(
-            'INSERT INTO department SET ?', department
+            "INSERT INTO department SET ?", department
         );
     }
 // create a method that adds a role
