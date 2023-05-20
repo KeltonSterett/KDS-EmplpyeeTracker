@@ -1,6 +1,6 @@
 const connection = require('./connection.js');
 const { prompt } = require('inquirer');
-const db = require('./db/index.js');
+const DB = require('./db/index.js');
 
 questions()
 function questions() {
@@ -76,16 +76,17 @@ function questions() {
             }
         })
 };
+
 // write functions that take user input and (create, update, delete) and calls the appropriate method
 
-// creating view all functions query the database and return the results
-connection.query('SELECT * FROM department', function (err, results) {
-    if (err) throw err;
-    console.log(results);
-});
-
-connection.query('SELECT * FROM role', function (err, results) {
-    if (err) throw err;
-    console.log(results);
-});
+// creating view all department function query the database and return the results
+// connection.query('SELECT * FROM department', function (err, results) {
+//     if (err) throw err;
+//     console.log(results);
+// });
+// // creating view all roles function query the database and return the results
+// connection.query('SELECT * FROM role', function (err, results) {
+//     if (err) throw err;
+//     console.log(results);
+// });
 
