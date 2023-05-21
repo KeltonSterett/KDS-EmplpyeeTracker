@@ -54,43 +54,42 @@ function questions() {
             switch (choices) {
                 case 'viewAllDepartments':
                     db.viewAllDepartments().then((res) => {
-                        console.table(res[0]);
-                    });
+                        console.table(res[0])
                     questions();
+                })
+                    
                     break;
                 // if the choice is view all roles, call the view all roles method
                 case 'viewAllRoles':
                     db.viewAllRoles().then((res) => {
                         console.table(res[0]);
-                    });
-                    // questions();
+                    questions();
+                });
+                    
                     break;
                 // if the choice is view all employees, call the view all employees method
                 case 'viewAllEmployees':
                     db.viewAllEmployees().then((res) => {
                         console.table(res[0]);
-                    });
-                    // questions();
+                    questions();
+                });
+                    
                     break;
                 // if the choice is add department, call the add department method and prompt the user for the department name
                 case 'addDepartment':
                     addDepartment();
-                    // questions()
                     break;
                 // if the choice is add role, call the add role method
                 case 'addRole':
                     addRole()
-                    // questions();
                     break;
                 // if the choice is add employee, call the add employee method
                 case 'addEmployee':
-                    addEmployee()
-                    // questions();
+                    addEmployee();
                     break;
                 // if the choice is update employee role, call the update employee role method
                 case 'updateEmployeeRole':
                     updateEmployeeRole();
-                    // questions();
                     break;
                 // if the choice is exit, exit the application
                 case 'exit':
@@ -116,6 +115,7 @@ function addDepartment() {
             db.addDepartment(department).then(() => {
                 console.log('Department added to database!');
                 console.table(department);
+                questions();
             });
         })
 }
@@ -143,6 +143,7 @@ function addRole() {
             let role = res;
             db.addRole(role).then(() => {
                 console.table(role);
+                questions();
             });
         })
 }
@@ -175,6 +176,7 @@ function addEmployee() {
             let employee = res;
             db.addEmployee(employee).then(() => {
                 console.table(employee);
+                questions();
             });
         })
 }
@@ -195,8 +197,9 @@ function updateEmployeeRole() {
     ])
         .then((res) => {
             let employee = res;
-            db.updateEmployeeRole(employee).then(() => {
+            db.updateEmployeeRole(employee.id,employee.role_id).then(() => {
                 console.table(employee);
+                questions();
             });
         })
 }
