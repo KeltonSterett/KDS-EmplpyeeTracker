@@ -17,7 +17,7 @@
   You must have node installed and then run npm i to install all the package managers that are used in this applitcation.
 
   ## Usage
-  Here is a link to a video demonstrating user usage of application:
+  Here is a link to a video demonstrating user usage of application: https://drive.google.com/file/d/1p1I2s7fn0psHcXCwzhzitsUhnckdiRcE/view
 
    ## License
       This project is licensed under the MIT license.
